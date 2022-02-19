@@ -1,8 +1,9 @@
 {
   "scripts": {
-    "frontend": "cd frontend && npm start",
+    "frontend": "cd frontend && cd src && npm start",
     "api": "cd backend && nodemon www",
     "dev": "concurrently --kill-others-on-fail \"npm run api\" \"npm run frontend\"",
+    "resources": "cd frontend && cd src && cd resources && http-server",
     "heroku-postbuild": "cd frontend && npm install && npm run build"
   }
 }
