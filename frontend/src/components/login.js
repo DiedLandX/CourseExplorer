@@ -63,8 +63,8 @@ export function Login() {
     <div>
       <MyNavbar />
 
-      <img id="show-img" src="http://127.0.0.1:8080/homeBackGround.jpg" />
-      <img id="login-img" src="http://127.0.0.1:8080/loginbg.jpg" />
+      <img id="show-img" src="" />
+      <img id="login-img" src="" />
 
       <div className="auth-form">
         <div className="login-container">

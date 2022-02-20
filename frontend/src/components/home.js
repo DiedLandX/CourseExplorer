@@ -5,7 +5,7 @@ export function Home() {
     <div>
       <MyNavbar />
       <div className="show-case">
-        <img id="show-img-home" src="homeBackGround.jpg" />
+        <img id="show-img-home" src="" />
         <div className="img-content">
           <div className="img-content-container">
             <h1>We are here to deliver the best courses for you!</h1>
