@@ -34,6 +34,7 @@ app.use(
     store: store,
     saveUninitialized: false,
     resave: false,
+    name: "SessionID",
     cookie: {
       httpOnly: true,
       secure: true,
