@@ -33,13 +33,13 @@ app.use(
     store: store,
     saveUninitialized: false,
     resave: false,
-    name: "SessionID",
     cookie: {
       httpOnly: true,
-      secure: true,
+      secure: "",
       maxAge: 1000 * 60 * 60 * 48,
       sameSite: "none",
     },
+    proxy: false,
   })
 );
 app.use((req, res, next) => {
