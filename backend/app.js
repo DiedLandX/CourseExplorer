@@ -1,6 +1,5 @@
 var createError = require("http-errors");
 var express = require("express");
-var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const session = require("express-session");
 const mongoose = require("mongoose");
@@ -16,7 +15,7 @@ var getimageRouter = require("./routes/getimage");
 console.log(require("dotenv").config({ path: "../.env" }));
 
 var app = express();
-app.enable("trust proxy");
+app.set("trust proxy", true);
 const uri = process.env.URI;
 mongoose.connect(uri).catch((err) => console.log(err));
 const connection = mongoose.connection;
@@ -52,7 +51,6 @@ app.use((req, res, next) => {
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
 
 app.use("/", indexRouter);
 app.use("/courses", coursesRouter);
