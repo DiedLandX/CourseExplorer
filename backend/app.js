@@ -16,7 +16,7 @@ var getimageRouter = require("./routes/getimage");
 console.log(require("dotenv").config({ path: "../.env" }));
 
 var app = express();
-
+app.enable("trust proxy");
 const uri = process.env.URI;
 mongoose.connect(uri).catch((err) => console.log(err));
 const connection = mongoose.connection;
@@ -34,7 +34,12 @@ app.use(
     store: store,
     saveUninitialized: false,
     resave: false,
-    cookie: { secure: true },
+    cookie: {
+      httpOnly: true,
+      secure: true,
+      maxAge: 1000 * 60 * 60 * 48,
+      sameSite: "none",
+    },
   })
 );
 app.use((req, res, next) => {
