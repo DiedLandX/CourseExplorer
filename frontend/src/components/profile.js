@@ -36,7 +36,9 @@ export function Home() {
     <div>
       <MyNavbar />
 
-      <h1>Profile User:{userInfo != null ? userInfo.username : ""}</h1>
+      <h1 style={{ color: "white" }}>
+        Profile User: {userInfo != null ? userInfo.username : ""}
+      </h1>
       <button
         onClick={() => {
           Logout();

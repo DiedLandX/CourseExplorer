@@ -1,13 +1,14 @@
+const { json } = require("body-parser");
 var express = require("express");
 var router = express.Router();
 const User = require("../models/user.model");
-const session = require("express-session");
 
 router.get("/", (req, res) => {
   let sess = req.session;
   sess.set = true;
   if (sess.loggedIn) {
-    return res.redirect("/profile");
+    console.log("Logged in " + sess.username);
+    return res.redirect("/profile"); //Check if this does anything
   }
   res.send({ loggedIn: false });
 });
@@ -53,7 +54,9 @@ router.post("/register", (req, res) => {
     if (user != null) {
       res.send(
         //Try implementing to check for duplicate emails too.
-        `There is already a user with ${username} username` + user
+        json.stringify({
+          data: `There is already a user with ${username} username` + user,
+        })
       );
     } else {
       let newUser = new User({

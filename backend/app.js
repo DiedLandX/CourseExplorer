@@ -5,7 +5,6 @@ var logger = require("morgan");
 const session = require("express-session");
 const mongoose = require("mongoose");
 var MongoDBStore = require("connect-mongodb-session")(session);
-require("dotenv").config();
 
 var indexRouter = require("./routes/index");
 var coursesRouter = require("./routes/courses");
@@ -13,6 +12,9 @@ var loginRouter = require("./routes/login");
 var profileRouter = require("./routes/profile");
 var logoutRouter = require("./routes/logout");
 var getimageRouter = require("./routes/getimage");
+
+console.log(require("dotenv").config({ path: "../.env" }));
+
 var app = express();
 
 const uri = process.env.URI;
@@ -66,13 +68,12 @@ app.use(function (err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
 });
-const path = require("path");
 
-// Serve static files from the React frontend app
-app.use(express.static(path.join(__dirname, "../frontend/build")));
+// // Serve static files from the React frontend app
+// app.use(express.static(path.join(__dirname, "../frontend/build")));
 
-// AFTER defining routes: Anything that doesn't match what's above, send back index.html; (the beginning slash ('/') in the string is important!)
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname + "/../frontend/build/index.html"));
-});
+// // AFTER defining routes: Anything that doesn't match what's above, send back index.html; (the beginning slash ('/') in the string is important!)
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname + "/../frontend/build/index.html"));
+// });
 module.exports = app;

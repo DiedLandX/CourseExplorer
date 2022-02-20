@@ -5,5 +5,8 @@
     "dev": "concurrently --kill-others-on-fail \"npm run api\" \"npm run frontend\"",
     "resources": "cd frontend && cd src && cd resources && http-server",
     "heroku-postbuild": "cd frontend && npm install && npm run build"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.0"
   }
 }

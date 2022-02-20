@@ -26,6 +26,31 @@ export function Login() {
         }
       });
   }
+  function registerUser(username, email, password) {
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username: username,
+        email: email,
+        password: password,
+      }),
+    };
+    fetch("/login/register", requestOptions)
+      .then((res) => {
+        if (res.ok) {
+          res.json().then((data) => {
+            console.log(data);
+          });
+        }
+        throw res;
+      })
+      .catch((err) => {
+        if (err) {
+          console.log(err);
+        }
+      });
+  }
   {
     if (loggedIn) {
       return <Navigate to="/profile" />;
@@ -68,22 +93,37 @@ export function Login() {
         </div>
         <div className="registration-container">
           <input
-            id="usrname"
+            id="usrname-register"
             type="text"
             name="username"
             placeholder="Username"
           />
           <br />
           <input
-            id="pswd"
+            id="pswd-register"
             type="password"
             name="password"
             placeholder="Password"
           />
           <br />{" "}
-          <input id="email" type="emial" name="email" placeholder="Email" />
+          <input
+            id="email-register"
+            type="emial"
+            name="email"
+            placeholder="Email"
+          />
           <br />
-          <div className="btn-reg">Register</div>
+          <div
+            className="btn-reg"
+            onClick={() => {
+              let usrname = document.getElementById("usrname-register").value;
+              let email = document.getElementById("email-register").value;
+              let pswd = document.getElementById("pswd-register").value;
+              registerUser(usrname, email, pswd);
+            }}
+          >
+            Register
+          </div>
         </div>
       </div>
     </div>
