@@ -27,21 +27,26 @@ let store = new MongoDBStore({
   uri: uri,
   collection: "mySessions",
 });
-app.use(
-  session({
-    secret: "secret",
-    store: store,
-    saveUninitialized: false,
-    resave: false,
-    cookie: {
-      httpOnly: true,
-      secure: "",
-      maxAge: 1000 * 60 * 60 * 48,
-      sameSite: "none",
-    },
-    proxy: false,
-  })
-);
+let session_options = {
+  secret: "secret",
+  store: store,
+  saveUninitialized: false,
+  resave: false,
+  cookie: {
+    httpOnly: true,
+    secure: "",
+    maxAge: 1000 * 60 * 60 * 48,
+    sameSite: "none",
+  },
+  proxy: false,
+};
+if (app.get("env") === "production") {
+  //  app.set('trust proxy', true); // trust first proxy
+  session_options.cookie.secure = "auto"; // serve secure cookies
+  session_options.proxy = true;
+}
+app.use(session({ session_options }));
+
 app.use((req, res, next) => {
   res.append("Access-Control-Allow-Origin", "*");
   res.append("Access-Control-Allow-Headers", "content-type");
