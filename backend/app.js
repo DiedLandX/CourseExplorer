@@ -48,7 +48,7 @@ if (app.get("env") === "production") {
 app.use(session(session_options));
 
 app.use((req, res, next) => {
-  res.append("Access-Control-Allow-Origin", "https://courseef.herokuapp.com/");
+  res.append("Access-Control-Allow-Origin", "*");
   res.append("Access-Control-Allow-Methods", "POST,GET");
   res.append("Access-Control-Allow-Headers", "Content-Type, Authorization");
   next();
