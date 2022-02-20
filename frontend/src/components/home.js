@@ -5,10 +5,7 @@ export function Home() {
     <div>
       <MyNavbar />
       <div className="show-case">
-        <img
-          id="show-img-home"
-          src="http://127.0.0.1:8080/homeBackGround.jpg"
-        />
+        <img id="show-img-home" src="homeBackGround.jpg" />
         <div className="img-content">
           <div className="img-content-container">
             <h1>We are here to deliver the best courses for you!</h1>
