@@ -4,7 +4,7 @@ import Course from "./course";
 export function Home() {
   const [courseInfo, setcourseInfo] = useState([]);
   function getCourses() {
-    fetch("http://localhost:5000/courses")
+    fetch("https://course--explorer.herokuapp.com/courses")
       .then((res) => res.json())
       .then((data) => setcourseInfo(data));
   }
