@@ -45,7 +45,7 @@ if (app.get("env") === "production") {
   session_options.cookie.secure = "auto"; // serve secure cookies
   session_options.proxy = true;
 }
-app.use(session({ session_options }));
+app.use(session(session_options));
 
 app.use((req, res, next) => {
   res.append("Access-Control-Allow-Origin", "*");
