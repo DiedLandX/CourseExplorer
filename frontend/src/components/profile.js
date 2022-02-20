@@ -6,7 +6,7 @@ export function Home() {
   const [userInfo, setuserInfo] = useState([]);
 
   function Logout() {
-    fetch("/logout", { method: "post" })
+    fetch("https://course--explorer.herokuapp.com/logout", { method: "post" })
       .then((res) => {
         res.json().then((data) => setuserInfo(data));
       })
@@ -18,7 +18,7 @@ export function Home() {
   }
 
   useEffect(() => {
-    fetch("/profile")
+    fetch("https://course--explorer.herokuapp.com/profile")
       .then((res) =>
         res.json().then((data) => {
           setuserInfo(data);

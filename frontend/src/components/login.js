@@ -10,7 +10,7 @@ export function Login() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username: username, password: password }),
     };
-    fetch("/login/api", requestOptions)
+    fetch("https://course--explorer.herokuapp.com/login/api", requestOptions)
       .then((res) => {
         if (res.ok) {
           res.json().then((data) => {
@@ -36,7 +36,10 @@ export function Login() {
         password: password,
       }),
     };
-    fetch("/login/register", requestOptions)
+    fetch(
+      "https://course--explorer.herokuapp.com/login/register",
+      requestOptions
+    )
       .then((res) => {
         if (res.ok) {
           res.json().then((data) => {
