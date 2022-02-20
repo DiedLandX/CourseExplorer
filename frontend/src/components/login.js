@@ -7,6 +7,7 @@ export function Login() {
   function sendLoginData(username, password) {
     const requestOptions = {
       method: "POST",
+      creditentials: "include",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username: username, password: password }),
     };

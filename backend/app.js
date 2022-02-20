@@ -46,14 +46,17 @@ if (app.get("env") === "production") {
   session_options.proxy = true;
 }
 app.use(session(session_options));
-
 app.use((req, res, next) => {
   res.append("Access-Control-Allow-Origin", "*");
+  res.setHeader("Cache-Control", "private");
+
   res.append("Access-Control-Allow-Methods", "POST,GET");
   res.append("Access-Control-Allow-Headers", "Content-Type, Authorization");
   next();
 });
-
+app.use(
+  cors({ creditentials: "true", origin: "https://courseef.herokuapp.com/" })
+);
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
