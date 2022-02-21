@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Link, Navigate } from "react-router-dom";
 import MyNavbar from "./navbar";
+import bg1 from "../resources/homeBackGround.jpg";
+import bg2 from "../resources/loginbg.jpg";
 
 export function Login() {
   const [loggedIn, setloggedIn] = useState(false);
@@ -11,7 +13,7 @@ export function Login() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username: username, password: password }),
     };
-    fetch("https://course--explorer.herokuapp.com/login/api", requestOptions)
+    fetch("http://localhost:5001/login/api", requestOptions)
       .then((res) => {
         if (res.ok) {
           res.json().then((data) => {
@@ -64,8 +66,8 @@ export function Login() {
     <div>
       <MyNavbar />
 
-      <img id="show-img" src="" />
-      <img id="login-img" src="" />
+      <img id="show-img" src={bg1} />
+      <img id="login-img" src={bg2} />
 
       <div className="auth-form">
         <div className="login-container">

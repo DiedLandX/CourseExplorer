@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import MyNavbar from "./navbar";
+import bg1 from "../resources/homeBackGround.jpg";
+
 export function Home() {
   return (
     <div>
       <MyNavbar />
       <div className="show-case">
-        <img id="show-img-home" src="" />
+        <img id="show-img-home" src={bg1} />
         <div className="img-content">
           <div className="img-content-container">
             <h1>We are here to deliver the best courses for you!</h1>
